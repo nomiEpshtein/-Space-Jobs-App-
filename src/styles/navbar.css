@@ -1,0 +1,339 @@
+/* 🧭 NAVIGATION - FUTURISTIC DESIGN 🧭 */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding: var(--space-lg) 0;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-md);
+}
+
+.navbar.scrolled {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(30px);
+  box-shadow: var(--shadow-lg);
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 🏢 Logo */
+.navbar-logo {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 900;
+  background: var(--gradient-rainbow);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-decoration: none;
+  position: relative;
+  animation: logoGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes logoGlow {
+  0% { filter: drop-shadow(0 0 5px rgba(102, 126, 234, 0.5)); }
+  100% { filter: drop-shadow(0 0 15px rgba(240, 147, 251, 0.8)); }
+}
+
+.navbar-logo::after {
+  content: '💼';
+  margin-left: var(--space-sm);
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-10px); }
+  60% { transform: translateY(-5px); }
+}
+
+/* 🔗 Navigation Links */
+.navbar-nav {
+  display: flex;
+  list-style: none;
+  gap: var(--space-lg);
+  align-items: center;
+}
+
+.navbar-nav li {
+  position: relative;
+}
+
+.navbar-nav a {
+  color: #2d3748;
+  text-decoration: none;
+  font-weight: 600;
+  padding: var(--space-md) var(--space-lg);
+  border-radius: 25px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.9rem;
+}
+
+.navbar-nav a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--gradient-primary);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.navbar-nav a:hover::before {
+  opacity: 1;
+}
+
+.navbar-nav a:hover {
+  color: white;
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: var(--shadow-md);
+}
+
+.navbar-nav a.active {
+  background: var(--gradient-primary);
+  color: white;
+  box-shadow: var(--shadow-md);
+}
+
+/* 🎨 Special Effects */
+.navbar-nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--gradient-rainbow);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.navbar-nav a:hover::after {
+  width: 100%;
+}
+
+/* 🍔 Mobile Menu Button */
+.navbar-toggle {
+  display: none;
+  background: var(--gradient-primary);
+  border: none;
+  padding: var(--space-md);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  width: 40px;
+  height: 40px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-toggle::after {
+  content: 'תפריט';
+  position: absolute;
+  top: -35px;
+  right: 50%;
+  transform: translateX(50%);
+  background: rgba(0,0,0,0.9);
+  color: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 10000;
+}
+
+.navbar-toggle:hover::after {
+  opacity: 1;
+}
+
+.navbar-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: var(--shadow-lg);
+}
+
+.navbar-toggle span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: white;
+  font-weight: bold;
+  width: 100%;
+  height: 100%;
+}
+
+.navbar-toggle.active span {
+  transform: rotate(90deg);
+  transition: transform 0.3s ease;
+}
+
+/* 📱 Mobile Menu */
+.navbar-mobile {
+  position: fixed;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding: var(--space-xl);
+  transform: translateY(-100%);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-lg);
+}
+
+.navbar-mobile.active {
+  transform: translateY(-100%);
+  opacity: 1;
+  visibility: visible;
+}
+
+.navbar-mobile ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.navbar-mobile a {
+  display: block;
+  padding: var(--space-lg);
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 15px;
+  text-align: center;
+  font-weight: 600;
+  color: #2d3748;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.navbar-mobile a:hover {
+  background: var(--gradient-primary);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* 🌟 Scroll Indicator */
+.scroll-indicator {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: var(--gradient-rainbow);
+  z-index: 1001;
+  transition: width 0.3s ease;
+  animation: shimmer 2s linear infinite;
+}
+
+.scroll-indicator::after {
+  content: 'התקדמות בעמוד';
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(0,0,0,0.8);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.scroll-indicator:hover::after {
+  opacity: 1;
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .navbar-nav {
+    display: none;
+  }
+  
+  .navbar-toggle {
+    display: block;
+  }
+  
+  .navbar-container {
+    padding: 0 var(--space-md);
+  }
+  
+  .navbar-logo {
+    font-size: 1.5rem;
+  }
+}
+
+/* 🎭 Animation Delays */
+.navbar-nav li:nth-child(1) a { animation-delay: 0.1s; }
+.navbar-nav li:nth-child(2) a { animation-delay: 0.2s; }
+.navbar-nav li:nth-child(3) a { animation-delay: 0.3s; }
+.navbar-nav li:nth-child(4) a { animation-delay: 0.4s; }
+.navbar-nav li:nth-child(5) a { animation-delay: 0.5s; }
+
+/* 🌈 Hover Effects */
+.navbar-nav li:nth-child(odd) a:hover {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.navbar-nav li:nth-child(even) a:hover {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+/* 🎪 Special Animations */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.navbar {
+  animation: slideDown 0.6s ease-out;
+}
+
+/* 🔮 Glass Morphism Effect */
+.navbar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+  pointer-events: none;
+}
