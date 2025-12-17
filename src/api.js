@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 
-const URL="https://localhost:7010/api"
+const URL="https://server-jobs-app-1.onrender.com/api"
 
 //1
 export const getAllJobs=async()=>{
