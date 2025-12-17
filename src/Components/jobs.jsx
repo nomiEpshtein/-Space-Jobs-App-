@@ -7,7 +7,7 @@ const Jobs = ({arrJobs}) => {
   
 
   useEffect(() => {
-  document.title = `The count of jobs: ${arrJobs.length}`;
+  document.title = `The count of jobs: ${arrJobs?.length || 0}`;
 }, [arrJobs]);
 
   //פונקציה שמציגה את הנתונים
