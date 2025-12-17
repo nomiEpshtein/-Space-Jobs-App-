@@ -53,7 +53,7 @@ const addJobToState = (newJob) => {
   return (
     <div>
         <Routes>
-            <Route path= "/" element={<HomePage/>}/>
+            <Route path="*" element={<HomePage/>} />
             <Route path="/homePage" element={<HomePage/>}/>
             <Route path="/detailJobs/:id" element={<DetailJobs arrJobs={arrjob} deleteJobToState={deleteJobToState}/>} />
             <Route path="/jobs" element={<Jobs arrJobs={arrjob} />}/>
