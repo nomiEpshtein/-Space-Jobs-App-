@@ -34,8 +34,9 @@ const Jobs = ({arrJobs}) => {
 
 
   const navigate=useNavigate()
-    if (!arrJobs) {
-        return <div>Loading..</div>
+  
+if (!arrJobs || arrJobs.length === 0) {
+  return <div>Loading..</div>
 }
   return (
     <div className="jobs-page">
